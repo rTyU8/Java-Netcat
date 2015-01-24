@@ -22,16 +22,15 @@ public class NetcatExec {
     }
     try {
       // Create (buffered) input stream attached to connection socket
-      BufferedReader inFromClient = new BufferedReader(new InputStreamReader( connectionSocket.getInputStream()));
+      BufferedReader inFromClient = new BufferedReader(new InputStreamReader( 
+                                                           connectionSocket.getInputStream()));
       
       // Create output stream attached to connection socket
       DataOutputStream outToClient = new DataOutputStream(connectionSocket.getOutputStream());
       connectionSocket.setSoTimeout(100);
       
-      //File in = new File(argv[1]);
       String[] executableWithArgs = argv[1].split("\\s+");
       Process cmd = Runtime.getRuntime().exec(executableWithArgs);
-      //Process cmd = Runtime.getRuntime().exec(in.getPath());
       final InputStream inStream = cmd.getInputStream();
       OutputStream outStream = cmd.getOutputStream();
       final InputStream errorStream = cmd.getErrorStream();
@@ -42,7 +41,6 @@ public class NetcatExec {
           InputStreamReader reader = new InputStreamReader(inStream);
           Scanner scan = new Scanner(reader);
           while (scan.hasNextLine()) {
-            //System.out.println(scan.nextLine());
             byte toBytes[] = scan.nextLine().getBytes(); //output without newline
             byte lineSeparator[] = System.lineSeparator().getBytes(); //newline char(s)
             byte[] bytesWithNewline = new byte[toBytes.length + 2];

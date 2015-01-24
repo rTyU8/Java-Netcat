@@ -27,15 +27,15 @@ public class NetcatProxy {
       }
       
       // Create (buffered) input stream attached to connection socket
-      BufferedReader inFromClient = new BufferedReader( 
-                                                       new InputStreamReader( connectionSocket.getInputStream()));
+      BufferedReader inFromClient = new BufferedReader(new InputStreamReader( 
+                                                           connectionSocket.getInputStream()));
       
       // Create output stream attached to connection socket
-      DataOutputStream outToClient = new DataOutputStream( 
-                                                          connectionSocket.getOutputStream());
+      DataOutputStream outToClient = new DataOutputStream(connectionSocket.getOutputStream());
       
       // Create (buffered) input stream attached to connection socket
-      BufferedReader inFromClient2 = new BufferedReader(new InputStreamReader(connectionSocket2.getInputStream()));
+      BufferedReader inFromClient2 = new BufferedReader(new InputStreamReader(
+                                                            connectionSocket2.getInputStream()));
       
       // Create output stream attached to connection socket
       DataOutputStream outToClient2 = new DataOutputStream(connectionSocket2.getOutputStream());

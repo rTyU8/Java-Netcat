@@ -24,12 +24,11 @@ public class NetcatServer {
       }
       
       // Create (buffered) input stream attached to connection socket
-      BufferedReader inFromClient = new BufferedReader( 
-                                                       new InputStreamReader( connectionSocket.getInputStream()));
+      BufferedReader inFromClient = new BufferedReader(new InputStreamReader( 
+                                                           connectionSocket.getInputStream()));
       
       // Create output stream attached to connection socket
-      DataOutputStream outToClient = new DataOutputStream( 
-                                                          connectionSocket.getOutputStream());
+      DataOutputStream outToClient = new DataOutputStream(connectionSocket.getOutputStream());
       
       // Create (buffered) input stream attached to connection socket
       BufferedReader input = new BufferedReader(new InputStreamReader(System.in));

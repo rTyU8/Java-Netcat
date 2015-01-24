@@ -34,12 +34,11 @@ public class NetcatMulticast {
       }
       
       // Create (buffered) input stream attached to connection socket
-      BufferedReader inFromClient = new BufferedReader( 
-                                                       new InputStreamReader( connectionSocket.getInputStream()));
+      BufferedReader inFromClient = new BufferedReader(new InputStreamReader( 
+                                            connectionSocket.getInputStream()));
       
       // Create output stream attached to connection socket
-      DataOutputStream outToClient = new DataOutputStream( 
-                                                          connectionSocket.getOutputStream());
+      DataOutputStream outToClient = new DataOutputStream(connectionSocket.getOutputStream());
       
       //set socket timeout to prevent blocking for too long
       connectionSocket.setSoTimeout(100);
