@@ -29,10 +29,14 @@ public class NetcatExec {
       DataOutputStream outToClient = new DataOutputStream(connectionSocket.getOutputStream());
       connectionSocket.setSoTimeout(100);
       
+      //first argument to run remotely
       String[] executableWithArgs = argv[1].split("\\s+");
+      
+      //run program with arguments
       Process cmd = Runtime.getRuntime().exec(executableWithArgs);
-      final InputStream inStream = cmd.getInputStream();
-      OutputStream outStream = cmd.getOutputStream();
+      
+      final InputStream inStream = cmd.getInputStream(); //comes from client
+      OutputStream outStream = cmd.getOutputStream(); //goes to client
       final InputStream errorStream = cmd.getErrorStream();
       
       //thread to run process
@@ -41,10 +45,15 @@ public class NetcatExec {
           InputStreamReader reader = new InputStreamReader(inStream);
           Scanner scan = new Scanner(reader);
           while (scan.hasNextLine()) {
+            /**
+             * Convert text to byte array (taking into account newlines),
+             * which can then be sent to client.
+             */
             byte toBytes[] = scan.nextLine().getBytes(); //output without newline
             byte lineSeparator[] = System.lineSeparator().getBytes(); //newline char(s)
             byte[] bytesWithNewline = new byte[toBytes.length + 2];
             bytesWithNewline[bytesWithNewline.length - 1] = '\0'; //account for Windows newlines
+            
             System.arraycopy(toBytes, 0, bytesWithNewline, 0, toBytes.length);
             System.arraycopy(lineSeparator, 0, bytesWithNewline, toBytes.length, lineSeparator.length);
             try { 

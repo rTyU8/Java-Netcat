@@ -26,7 +26,7 @@ public class NetcatMulticast {
     // Create welcoming socket using port from argument
     ServerSocket welcomeSocket = new ServerSocket(port, 0);
     try{
-    // While loop to handle arbitrary sequence of clients making requests
+
     while(true) {
       // Wait for some client to connect and create new socket for connection
       if( connectionSocket == null) {
@@ -46,6 +46,7 @@ public class NetcatMulticast {
       try { //arbitrary condition - will time out no matter what
         while (((inFromClient.read(reader, 0, 1)) != -1))
         {
+          //Send input to each host one by one
           byte toBytes[] = new String(reader).getBytes();
           for (int i = 0; i < writers.length; i++)
             writers[i].write(toBytes);

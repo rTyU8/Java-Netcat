@@ -10,8 +10,8 @@ import java.net.*;
 public class NetcatProxy {
   public static void main(String argv[]) throws Exception {
     Socket connectionSocket = null;
-    int port = Integer.parseInt(argv[0]); 
-    int port2 = Integer.parseInt(argv[2]);
+    int port = Integer.parseInt(argv[0]);   //Proxy port 
+    int port2 = Integer.parseInt(argv[2]);  
     Socket connectionSocket2 = new Socket(argv[1], port2);
     char[] reader = new char[1];  //char to be read in
     
