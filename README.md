@@ -19,7 +19,7 @@ Arguments: [address] port
 
 NetcatExec is a server which the client sends commands to and receives 
 output. This allows a client to run programs remotely. <br />
-Arguments: port [command] [args]
+Arguments: port "command [args]"
 
 NetcatProxy is a proxy server. It takes an address and port number of
 a host to be accessed. <br />
